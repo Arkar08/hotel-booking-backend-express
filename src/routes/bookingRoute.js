@@ -6,7 +6,7 @@ import { authorizeAdmin, authorizeCustomer } from '../middleware/authMiddleware.
 const router = express.Router();
 
 router.post("/",authorizeCustomer,postBooking)
-router.get("/",getBooking)
+router.get("/",authorizeAdmin,getBooking)
 router.get("/:id",getIdBooking)
 router.patch("/:id",patchBooking)
 router.post("/download",authorizeAdmin,createInvoice)

@@ -31,14 +31,16 @@ export const postBooking = async(req,res)=>{
             })
         }
 
-        const findCoupon = await Discount.findOne({_id:couponId})
-        if(!findCoupon || findCoupon.isActive === false || findCoupon.isClaimed === true){
-            return res.status(400).json({
-                status:400,
-                message:'Coupon does not exist.'
-            })
+        if(couponId){
+            const findCoupon = await Discount.findOne({_id:couponId})
+            if(!findCoupon || findCoupon.isActive === false || findCoupon.isClaimed === true){
+                return res.status(400).json({
+                    status:400,
+                    message:'Coupon does not exist.'
+                })
+            }
         }
-
+        
         const newBooking = await Booking.create({
             userId:userId,
             roomId:roomId,
