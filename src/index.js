@@ -5,11 +5,14 @@ import roomRoute from './routes/roomRoute.js';
 import couponRoute from './routes/couponRoute.js';
 import bookingRoute from './routes/bookingRoute.js';
 import { authMiddleware } from './middleware/authMiddleware.js';
+import cors from 'cors'
 
 dotenv.config();
 
 
 const app = express()
+
+app.use(cors())
 
 
 app.use(express.json())
