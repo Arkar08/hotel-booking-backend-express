@@ -31,7 +31,7 @@ const userSchema = mongoose.Schema({
         type:Number,
         default:0
     },
-    profile_img:{
+    imgUrl:{
         type:String
     }
 },{timestamps:true})

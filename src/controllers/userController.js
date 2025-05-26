@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs'
 
 
 export const postUser = async(req,res)=>{
-    const {name,email,password,phNo,profile_img} = req.body;
+    const {name,email,password,phNo,imgUrl} = req.body;
 
     if(!name || !email || !password){
         return res.status(404).json({
@@ -31,7 +31,7 @@ export const postUser = async(req,res)=>{
                 email:email,
                 password:hashPassword,
                 phNo:phNo,
-                profile_img:profile_img
+                imgUrl:imgUrl
             })
 
             const token =await generateToken(res,newUser._id)
@@ -186,7 +186,7 @@ export const signUpUser = async(req,res)=>{
       const token = await generateToken(res,newUser._id)      
        return res.status(201).json({
             status:201,
-            mail:newUser.email,
+            email:newUser.email,
             id:newUser._id,
             token:token,
             message:"Register Successfully."
